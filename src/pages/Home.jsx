@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/logo.png';
 
 const tools = [
   {
@@ -23,17 +22,17 @@ const tools = [
     id: 'salary',
     title: 'Salary Reality Check 💀',
     description: 'Expected vs Reality salary calculator. LinkedIn ready!',
-    path: '#',
-    color: 'bg-gray-800 border border-gray-700 opacity-60',
-    status: 'Coming Soon',
+    path: '/salary',
+    color: 'bg-gradient-to-r from-green-500 to-teal-500',
+    status: 'Ready',
   },
   {
     id: 'bug',
     title: 'Random Bug Generator 😂',
     description: 'Click for a random funny bug to share with your team.',
-    path: '#',
-    color: 'bg-gray-800 border border-gray-700 opacity-60',
-    status: 'Coming Soon',
+    path: '/bug',
+    color: 'bg-gradient-to-r from-yellow-500 to-orange-500',
+    status: 'Ready',
   },
 ];
 
@@ -53,7 +52,6 @@ const Home = () => {
           >
             Share Platform 🔗
           </button>
-          <img src={logo} alt="DevFun Hub Logo" className="w-24 h-24 mx-auto mb-4 drop-shadow-lg" />
           <h1 className="text-6xl font-black mb-4 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">
             DevFun Hub
           </h1>

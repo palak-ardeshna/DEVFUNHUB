@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import RoastGenerator from './pages/RoastGenerator';
 import DevQuiz from './pages/DevQuiz';
+import SalaryRealityCheck from './pages/SalaryRealityCheck';
+import BugGenerator from './pages/BugGenerator';
 
 function App() {
   return (
@@ -11,6 +13,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/roast" element={<RoastGenerator />} />
         <Route path="/quiz" element={<DevQuiz />} />
+        <Route path="/salary" element={<SalaryRealityCheck />} />
+        <Route path="/bug" element={<BugGenerator />} />
       </Routes>
     </Router>
   );
