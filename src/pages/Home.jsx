@@ -34,6 +34,30 @@ const tools = [
     color: 'bg-gradient-to-r from-yellow-500 to-orange-500',
     status: 'Ready',
   },
+  {
+    id: 'typing',
+    title: 'Typing Speed for Coders ⚡',
+    description: 'How fast can you type real code? Competitive + addictive!',
+    path: '/typing',
+    color: 'bg-gradient-to-r from-cyan-500 to-blue-500',
+    status: 'Ready',
+  },
+  {
+    id: 'prompts',
+    title: 'AI Prompt Library 🤖',
+    description: 'Copy-paste professional prompts for your next project.',
+    path: '/prompts',
+    color: 'bg-gradient-to-r from-pink-500 to-rose-500',
+    status: 'Ready',
+  },
+  {
+    id: 'portfolio',
+    title: 'Portfolio Idea Generator 🎨',
+    description: 'Stop thinking, start building! Get random project ideas.',
+    path: '/portfolio',
+    color: 'bg-gradient-to-r from-orange-500 to-yellow-500',
+    status: 'Ready',
+  },
 ];
 
 const Home = () => {
@@ -47,7 +71,7 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-8">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <header className="text-center mb-16 relative">
           <button 
             onClick={sharePlatform}
@@ -57,44 +81,41 @@ const Home = () => {
           >
             {copied ? 'Link Copied! ✅' : 'Share Platform 🔗'}
           </button>
-          <h1 className="text-6xl font-black mb-4 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">
+          <h1 className="text-7xl font-black mb-4 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent italic tracking-tighter">
             DevFun Hub
           </h1>
-          <p className="text-xl text-gray-400">
+          <p className="text-2xl text-gray-400 font-medium tracking-wide">
             Timepass + Learning + Shareable tools for developers 🚀
           </p>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {tools.map((tool) => (
             <div key={tool.id} className="relative h-full">
               <Link
                 to={tool.path}
-                className={`${tool.color} block p-8 rounded-3xl transform transition hover:scale-102 duration-300 shadow-2xl h-full`}
-                onClick={(e) => tool.status === 'Coming Soon' && e.preventDefault()}
+                className={`${tool.color} block p-8 rounded-[2rem] transform transition hover:scale-102 duration-300 shadow-2xl h-full border border-white/10`}
               >
-                <div className="flex justify-between items-start mb-4">
-                  <h2 className="text-3xl font-bold">{tool.title}</h2>
-                  <span className={`text-xs px-2 py-1 rounded-full ${tool.status === 'Ready' ? 'bg-green-500/20 text-green-300' : 'bg-gray-500/20 text-gray-400'}`}>
+                <div className="flex justify-between items-start mb-6">
+                  <h2 className="text-3xl font-black uppercase tracking-tight italic leading-tight">{tool.title}</h2>
+                  <span className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full ${tool.status === 'Ready' ? 'bg-white/20 text-white' : 'bg-black/20 text-gray-400'}`}>
                     {tool.status}
                   </span>
                 </div>
-                <p className="text-white/80 text-lg mb-6">{tool.description}</p>
-                {tool.status === 'Ready' && (
-                  <div className="inline-block bg-white text-gray-900 px-6 py-2 rounded-full font-bold">
-                    Try Now →
-                  </div>
-                )}
+                <p className="text-white/90 text-lg mb-8 font-medium italic leading-relaxed">{tool.description}</p>
+                <div className="inline-block bg-white text-gray-900 px-8 py-3 rounded-2xl font-black uppercase tracking-widest text-sm shadow-xl">
+                  Try Now →
+                </div>
               </Link>
             </div>
           ))}
         </div>
 
-        <footer className="mt-24 text-center">
-          <div className="inline-block bg-gray-800/50 backdrop-blur-sm px-8 py-4 rounded-full border border-gray-700">
-            <p className="text-gray-400">
+        <footer className="mt-32 text-center">
+          <div className="inline-block bg-gray-800/50 backdrop-blur-xl px-12 py-6 rounded-[2rem] border border-gray-700 shadow-2xl">
+            <p className="text-gray-400 font-bold text-lg italic tracking-wide">
               Built for the dev community with ❤️ | 
-              <span className="text-purple-400 ml-2">#DevFunHub #CodeLife</span>
+              <span className="text-purple-400 ml-3">#DevFunHub #CodeLife #DeveloperFun</span>
             </p>
           </div>
         </footer>
