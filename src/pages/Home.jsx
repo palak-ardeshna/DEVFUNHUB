@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { PRODUCTION_URL } from '../utils/constants';
 
 const tools = [
   {
@@ -64,7 +65,7 @@ const Home = () => {
   const [copied, setCopied] = useState(false);
 
   const sharePlatform = () => {
-    navigator.clipboard.writeText(`Check out DevFun Hub! Fun tools for developers: ${window.location.origin}`);
+    navigator.clipboard.writeText(`Check out DevFun Hub! Fun tools for developers: ${PRODUCTION_URL}`);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };

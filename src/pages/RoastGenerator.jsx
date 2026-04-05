@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { roasts } from '../data/roasts';
+import { PRODUCTION_URL } from '../utils/constants';
 
 const RoastGenerator = () => {
   const [name, setName] = useState('');
@@ -18,7 +19,7 @@ const RoastGenerator = () => {
   };
 
   const copyRoast = () => {
-    const text = `🔥 Roast: "${roast}"\n\nGenerate your own roast at DevFun Hub! 🚀`;
+    const text = `🔥 Roast: "${roast}"\n\nGenerate your own roast at DevFun Hub! 🚀\n${PRODUCTION_URL}/roast`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

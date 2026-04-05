@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { roles, funnyComments } from '../data/salary';
+import { PRODUCTION_URL } from '../utils/constants';
 
 const SalaryRealityCheck = () => {
   const [role, setRole] = useState(roles[0].label);
@@ -30,7 +31,7 @@ const SalaryRealityCheck = () => {
   };
 
   const copyReality = () => {
-    const text = `💸 Salary Reality Check\nRole: ${role}\nExperience: ${exp} years\nExpected 😎: ${result.expected} LPA\nReality 😭: ${result.reality} LPA\n\n"${result.comment}"\n\nCheck yours at DevFun Hub! 🚀`;
+    const text = `💸 Salary Reality Check\nRole: ${role}\nExperience: ${exp} years\nExpected 😎: ${result.expected} LPA\nReality 😭: ${result.reality} LPA\n\n"${result.comment}"\n\nCheck yours at DevFun Hub! 🚀\n${PRODUCTION_URL}/salary`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

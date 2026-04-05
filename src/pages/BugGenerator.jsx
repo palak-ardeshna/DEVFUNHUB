@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { bugs } from '../data/bugs';
+import { PRODUCTION_URL } from '../utils/constants';
 
 const BugGenerator = () => {
   const [bug, setBug] = useState(null);
@@ -13,7 +14,7 @@ const BugGenerator = () => {
   };
 
   const copyBug = () => {
-    const text = `🐛 Bug: ${bug.title}\n🐜 Description: ${bug.description}\n💡 Solution: ${bug.solution}\n\nCheck out more at DevFun Hub! 🚀`;
+    const text = `🐛 Bug: ${bug.title}\n🐜 Description: ${bug.description}\n💡 Solution: ${bug.solution}\n\nCheck out more at DevFun Hub! 🚀\n${PRODUCTION_URL}/bug`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

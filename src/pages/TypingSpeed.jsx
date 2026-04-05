@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { codeSnippets } from '../data/typing';
+import { PRODUCTION_URL } from '../utils/constants';
 
 const TypingSpeed = () => {
   const [snippet, setSnippet] = useState('');
@@ -9,6 +10,7 @@ const TypingSpeed = () => {
   const [timer, setTimer] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
   const [stats, setStats] = useState({ wpm: 0, accuracy: 0 });
+  const [copied, setCopied] = useState(false);
   const intervalRef = useRef(null);
 
   useEffect(() => {
@@ -23,7 +25,15 @@ const TypingSpeed = () => {
     setStartTime(null);
     setTimer(0);
     setIsFinished(false);
+    setCopied(false);
     clearInterval(intervalRef.current);
+  };
+
+  const copyStats = () => {
+    const text = `⚡ Typing Speed Result: ${stats.wpm} WPM with ${stats.accuracy}% accuracy!\n\nCan you beat me at DevFun Hub? 🚀\n${PRODUCTION_URL}/typing`;
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   const handleInput = (e) => {
@@ -103,8 +113,16 @@ const TypingSpeed = () => {
                 <p className="text-4xl font-black">{stats.stats?.accuracy || stats.accuracy}%</p>
               </div>
               <button
+                onClick={copyStats}
+                className={`bg-cyan-600 text-white font-black py-4 rounded-2xl transition transform hover:scale-102 active:scale-95 uppercase tracking-widest ${
+                  copied ? 'bg-green-500' : 'hover:bg-cyan-700'
+                }`}
+              >
+                {copied ? 'Result Copied! ✅' : 'Share My Score 🔗'}
+              </button>
+              <button
                 onClick={generateNewSnippet}
-                className="col-span-2 bg-white text-gray-900 font-black py-4 rounded-2xl hover:bg-cyan-400 transition transform hover:scale-102 active:scale-95 uppercase tracking-widest"
+                className="bg-white text-gray-900 font-black py-4 rounded-2xl hover:bg-cyan-400 transition transform hover:scale-102 active:scale-95 uppercase tracking-widest"
               >
                 Try Another Snippet 🔄
               </button>

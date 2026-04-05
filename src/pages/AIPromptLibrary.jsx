@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { promptCategories } from '../data/prompts';
+import { PRODUCTION_URL } from '../utils/constants';
 
 const AIPromptLibrary = () => {
   const [selectedCategory, setSelectedCategory] = useState(promptCategories[0].id);
@@ -9,7 +10,8 @@ const AIPromptLibrary = () => {
   const currentCategory = promptCategories.find(c => c.id === selectedCategory);
 
   const copyPrompt = (text, index) => {
-    navigator.clipboard.writeText(text);
+    const shareText = `🤖 AI Prompt: "${text}"\n\nFind more professional prompts at DevFun Hub! 🚀\n${PRODUCTION_URL}/prompts`;
+    navigator.clipboard.writeText(shareText);
     setCopiedIndex(index);
     setTimeout(() => setCopiedIndex(null), 2000);
   };

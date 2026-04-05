@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { quizQuestions, results } from '../data/quiz';
+import { PRODUCTION_URL } from '../utils/constants';
 
 const DevQuiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -37,7 +38,7 @@ const DevQuiz = () => {
   };
 
   const copyResult = () => {
-    const text = `🧠 Dev Quiz Result: ${finalResult.title}\n"${finalResult.description}"\n\nFind out your dev type at DevFun Hub! 🚀`;
+    const text = `🧠 Dev Quiz Result: ${finalResult.title}\n"${finalResult.description}"\n\nFind out your dev type at DevFun Hub! 🚀\n${PRODUCTION_URL}/quiz`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

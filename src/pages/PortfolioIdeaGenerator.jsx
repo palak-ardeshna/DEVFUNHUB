@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { portfolioIdeas } from '../data/portfolio';
+import { PRODUCTION_URL } from '../utils/constants';
 
 const PortfolioIdeaGenerator = () => {
   const [idea, setIdea] = useState(null);
@@ -13,7 +14,7 @@ const PortfolioIdeaGenerator = () => {
   };
 
   const copyIdea = () => {
-    const text = `🎨 Portfolio Idea: ${idea.title}\n🔥 Tech: ${idea.tech}\n💪 Difficulty: ${idea.difficulty}\n📝 Description: ${idea.description}\n\nCheck out more at DevFun Hub! 🚀`;
+    const text = `🎨 Portfolio Idea: ${idea.title}\n🔥 Tech: ${idea.tech}\n💪 Difficulty: ${idea.difficulty}\n📝 Description: ${idea.description}\n\nGet more ideas at DevFun Hub! 🚀\n${PRODUCTION_URL}/portfolio`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
