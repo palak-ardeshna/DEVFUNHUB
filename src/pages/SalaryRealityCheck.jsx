@@ -31,7 +31,7 @@ const SalaryRealityCheck = () => {
   };
 
   const copyReality = () => {
-    const text = `💸 Salary Reality Check\nRole: ${role}\nExperience: ${exp} years\nExpected 😎: ${result.expected} LPA\nReality 😭: ${result.reality} LPA\n\n"${result.comment}"\n\nCheck yours at DevFun Hub! 🚀\n${PRODUCTION_URL}/salary`;
+    const text = `💸 Expected: ${result.expected} LPA | Reality: ${result.reality} LPA\n\nCheck yours: ${PRODUCTION_URL}/salary`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

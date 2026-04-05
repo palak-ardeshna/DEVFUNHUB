@@ -38,7 +38,7 @@ const DevQuiz = () => {
   };
 
   const copyResult = () => {
-    const text = `🧠 Dev Quiz Result: ${finalResult.title}\n"${finalResult.description}"\n\nFind out your dev type at DevFun Hub! 🚀\n${PRODUCTION_URL}/quiz`;
+    const text = `🧠 I'm "${finalResult.title}"\n\nCheck yours: ${PRODUCTION_URL}/quiz`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

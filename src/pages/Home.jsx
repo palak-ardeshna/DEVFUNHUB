@@ -65,7 +65,7 @@ const Home = () => {
   const [copied, setCopied] = useState(false);
 
   const sharePlatform = () => {
-    navigator.clipboard.writeText(`Check out DevFun Hub! Fun tools for developers: ${PRODUCTION_URL}`);
+    navigator.clipboard.writeText(PRODUCTION_URL);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };

@@ -14,7 +14,7 @@ const PortfolioIdeaGenerator = () => {
   };
 
   const copyIdea = () => {
-    const text = `🎨 Portfolio Idea: ${idea.title}\n🔥 Tech: ${idea.tech}\n💪 Difficulty: ${idea.difficulty}\n📝 Description: ${idea.description}\n\nGet more ideas at DevFun Hub! 🚀\n${PRODUCTION_URL}/portfolio`;
+    const text = `🎨 Idea: ${idea.title}\n\nGet more: ${PRODUCTION_URL}/portfolio`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

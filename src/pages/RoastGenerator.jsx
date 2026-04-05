@@ -19,7 +19,7 @@ const RoastGenerator = () => {
   };
 
   const copyRoast = () => {
-    const text = `🔥 Roast: "${roast}"\n\nGenerate your own roast at DevFun Hub! 🚀\n${PRODUCTION_URL}/roast`;
+    const text = `🔥 "${roast}"\n\nTry it: ${PRODUCTION_URL}/roast`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

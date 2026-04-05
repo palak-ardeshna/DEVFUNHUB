@@ -30,7 +30,7 @@ const TypingSpeed = () => {
   };
 
   const copyStats = () => {
-    const text = `⚡ Typing Speed Result: ${stats.wpm} WPM with ${stats.accuracy}% accuracy!\n\nCan you beat me at DevFun Hub? 🚀\n${PRODUCTION_URL}/typing`;
+    const text = `⚡ Typing Speed: ${stats.wpm} WPM | ${stats.accuracy}% accuracy\n\nTry it: ${PRODUCTION_URL}/typing`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

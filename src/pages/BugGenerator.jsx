@@ -14,7 +14,7 @@ const BugGenerator = () => {
   };
 
   const copyBug = () => {
-    const text = `🐛 Bug: ${bug.title}\n🐜 Description: ${bug.description}\n💡 Solution: ${bug.solution}\n\nCheck out more at DevFun Hub! 🚀\n${PRODUCTION_URL}/bug`;
+    const text = `🐛 ${bug.title}\n\nGet more bugs: ${PRODUCTION_URL}/bug`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
