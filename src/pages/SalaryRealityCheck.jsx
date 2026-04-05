@@ -7,6 +7,7 @@ const SalaryRealityCheck = () => {
   const [exp, setExp] = useState(0);
   const [expected, setExpected] = useState('');
   const [result, setResult] = useState(null);
+  const [copied, setCopied] = useState(false);
 
   const calculateSalary = (e) => {
     e.preventDefault();
@@ -25,6 +26,14 @@ const SalaryRealityCheck = () => {
       reality: realityVal,
       comment
     });
+    setCopied(false);
+  };
+
+  const copyReality = () => {
+    const text = `💸 Salary Reality Check\nRole: ${role}\nExperience: ${exp} years\nExpected 😎: ${result.expected} LPA\nReality 😭: ${result.reality} LPA\n\n"${result.comment}"\n\nCheck yours at DevFun Hub! 🚀`;
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -101,10 +110,12 @@ const SalaryRealityCheck = () => {
             </p>
             <div className="mt-8 flex justify-center">
               <button
-                onClick={() => navigator.clipboard.writeText(`I expected ${result.expected} LPA, but the reality is ${result.reality} LPA! 😭 Check yours at DevFun Hub!`)}
-                className="bg-green-600 hover:bg-green-700 text-white px-8 py-2 rounded-full font-bold transition shadow-lg"
+                onClick={copyReality}
+                className={`px-8 py-2 rounded-full font-bold transition shadow-lg ${
+                  copied ? 'bg-green-500 text-white' : 'bg-green-600 hover:bg-green-700 text-white'
+                }`}
               >
-                Share Reality 🔗
+                {copied ? 'Copied! 📋' : 'Share Reality 🔗'}
               </button>
             </div>
           </div>

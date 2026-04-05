@@ -5,6 +5,7 @@ import { roasts } from '../data/roasts';
 const RoastGenerator = () => {
   const [name, setName] = useState('');
   const [roast, setRoast] = useState('');
+  const [copied, setCopied] = useState(false);
 
   const generateRoast = (e) => {
     e.preventDefault();
@@ -13,6 +14,14 @@ const RoastGenerator = () => {
     const randomIndex = Math.floor(Math.random() * roasts.length);
     const selectedRoast = roasts[randomIndex].replace('{name}', name);
     setRoast(selectedRoast);
+    setCopied(false);
+  };
+
+  const copyRoast = () => {
+    const text = `🔥 Roast: "${roast}"\n\nGenerate your own roast at DevFun Hub! 🚀`;
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -54,10 +63,12 @@ const RoastGenerator = () => {
             </h2>
             <div className="mt-6 flex justify-center">
               <button
-                onClick={() => navigator.clipboard.writeText(roast)}
-                className="bg-white/20 hover:bg-white/30 text-white px-6 py-2 rounded-full text-sm font-semibold transition"
+                onClick={copyRoast}
+                className={`px-6 py-2 rounded-full text-sm font-semibold transition ${
+                  copied ? 'bg-green-500 text-white' : 'bg-white/20 hover:bg-white/30 text-white'
+                }`}
               >
-                Copy Roast 📋
+                {copied ? 'Copied! 📋' : 'Copy Roast 📋'}
               </button>
             </div>
           </div>

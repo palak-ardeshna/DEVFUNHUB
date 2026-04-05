@@ -12,6 +12,7 @@ const DevQuiz = () => {
   });
   const [showResult, setShowResult] = useState(false);
   const [finalResult, setFinalResult] = useState(null);
+  const [copied, setCopied] = useState(false);
 
   const handleAnswer = (type) => {
     setScore((prev) => ({
@@ -32,6 +33,14 @@ const DevQuiz = () => {
     );
     setFinalResult(results[highestScoreType]);
     setShowResult(true);
+    setCopied(false);
+  };
+
+  const copyResult = () => {
+    const text = `🧠 Dev Quiz Result: ${finalResult.title}\n"${finalResult.description}"\n\nFind out your dev type at DevFun Hub! 🚀`;
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   const resetQuiz = () => {
@@ -82,10 +91,12 @@ const DevQuiz = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
-                onClick={() => navigator.clipboard.writeText(`I'm ${finalResult.title}! Check your developer type here: ${window.location.href}`)}
-                className="bg-white text-blue-700 font-bold py-3 px-8 rounded-full hover:bg-blue-50 transition"
+                onClick={copyResult}
+                className={`font-bold py-3 px-8 rounded-full transition ${
+                  copied ? 'bg-green-500 text-white' : 'bg-white text-blue-700 hover:bg-blue-50'
+                }`}
               >
-                Share Result 🔗
+                {copied ? 'Copied! 📋' : 'Share Result 🔗'}
               </button>
               <button
                 onClick={resetQuiz}

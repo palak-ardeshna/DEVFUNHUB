@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const tools = [
@@ -37,9 +37,12 @@ const tools = [
 ];
 
 const Home = () => {
+  const [copied, setCopied] = useState(false);
+
   const sharePlatform = () => {
     navigator.clipboard.writeText(`Check out DevFun Hub! Fun tools for developers: ${window.location.origin}`);
-    alert('Link copied to clipboard! 🚀');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -48,9 +51,11 @@ const Home = () => {
         <header className="text-center mb-16 relative">
           <button 
             onClick={sharePlatform}
-            className="absolute top-0 right-0 bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-lg text-sm transition hidden sm:block"
+            className={`absolute top-0 right-0 px-4 py-2 rounded-lg text-sm transition hidden sm:block font-bold ${
+              copied ? 'bg-green-500 text-white' : 'bg-gray-800 hover:bg-gray-700 text-gray-300'
+            }`}
           >
-            Share Platform 🔗
+            {copied ? 'Link Copied! ✅' : 'Share Platform 🔗'}
           </button>
           <h1 className="text-6xl font-black mb-4 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">
             DevFun Hub

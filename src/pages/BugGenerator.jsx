@@ -4,10 +4,19 @@ import { bugs } from '../data/bugs';
 
 const BugGenerator = () => {
   const [bug, setBug] = useState(null);
+  const [copied, setCopied] = useState(false);
 
   const generateBug = () => {
     const randomIndex = Math.floor(Math.random() * bugs.length);
     setBug(bugs[randomIndex]);
+    setCopied(false);
+  };
+
+  const copyBug = () => {
+    const text = `🐛 Bug: ${bug.title}\n🐜 Description: ${bug.description}\n💡 Solution: ${bug.solution}\n\nCheck out more at DevFun Hub! 🚀`;
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -49,10 +58,12 @@ const BugGenerator = () => {
             
             <div className="mt-10 flex justify-center">
               <button
-                onClick={() => navigator.clipboard.writeText(`${bug.title}: ${bug.description} - Solution: ${bug.solution}`)}
-                className="bg-white text-gray-900 px-10 py-3 rounded-full font-black hover:bg-yellow-400 transition shadow-2xl uppercase text-sm"
+                onClick={copyBug}
+                className={`px-10 py-3 rounded-full font-black transition shadow-2xl uppercase text-sm ${
+                  copied ? 'bg-green-500 text-white' : 'bg-white text-gray-900 hover:bg-yellow-400'
+                }`}
               >
-                Copy Bug 📋
+                {copied ? 'Copied! 📋' : 'Copy Bug 📋'}
               </button>
             </div>
           </div>
