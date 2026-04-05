@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../assets/logo.png';
 
 const tools = [
   {
@@ -52,6 +53,7 @@ const Home = () => {
           >
             Share Platform 🔗
           </button>
+          <img src={logo} alt="DevFun Hub Logo" className="w-24 h-24 mx-auto mb-4 drop-shadow-lg" />
           <h1 className="text-6xl font-black mb-4 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">
             DevFun Hub
           </h1>
